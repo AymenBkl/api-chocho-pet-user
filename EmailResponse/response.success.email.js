@@ -1,4 +1,3 @@
-const loggerAuth = require('../Middlewares/logger').loggerAuth;
 
 module.exports.success = (res,msg,status,user) => {
     res.statusCode = status;
