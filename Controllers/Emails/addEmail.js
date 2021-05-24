@@ -10,11 +10,12 @@ module.exports.addEmail = (res,email) => {
                 emailResponse.response('success',res,'Email Created Succesfully',200,null)
             }
             else {
-                emailResponse.response('error',res,'Email Failed',500,null)
+                emailResponse.response('error',res,'Email Failed',500,null);
             }
         })
         .catch(err => {
-            console.log(err);
-            emailResponse.response('error',res,'Email Failed',200,null)
+            emailResponse.response('error',res,err,500,null);
+
+            console.log('err',err);
         })
 }

@@ -12,7 +12,7 @@ const httpsRedirect = require('./Middlewares/https.redirect');
 const mongoose = require('./Middlewares/mongoose');
 const cors = require('./Middlewares/cors');
 
-const sendEmail = require('./Middlewares/nodemailer');
+//const sendEmail = require('./Middlewares/nodemailer');
 // view engine setup
 app.use(logger('dev'));
 app.use(express.json());
@@ -22,7 +22,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(httpsRedirect);
 app.use(cors.corsWithOptions);
 
-sendEmail.createTransporter();
+//sendEmail.createTransporter();
 app.use('/api/emails',emailsRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
