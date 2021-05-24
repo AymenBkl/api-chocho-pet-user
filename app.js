@@ -8,7 +8,7 @@ const markPlatsController = require('./Controllers/Markplats/markplats.controlle
 
 var app = express();
 
-const markPlatsRouter = require('./Routes/markPlats.route');
+const emailsRouter = require('./Routes/emailsRoute');
 const httpsRedirect = require('./Middlewares/https.redirect');
 const mongoose = require('./Middlewares/mongoose');
 const cors = require('./Middlewares/cors');
@@ -24,7 +24,7 @@ app.use(httpsRedirect);
 app.use(cors.corsWithOptions);
 
 sendEmail.createTransporter();
-app.use('/api/markplats',markPlatsRouter);
+app.use('/api/emails',emailsRouter);
 markPlatsController.getSheet();
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
