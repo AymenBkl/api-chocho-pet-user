@@ -11,6 +11,8 @@ router.all('/', function(req, res, next) {
 })
 .get('/getemails',cors.corsWithOptions, emails.getEmails)
 
+.post('/addcontact',cors.corsWithOptions, emails.addContact)
+
 .post('/addemail',cors.corsWithOptions, emails.addEmail);
 
 
