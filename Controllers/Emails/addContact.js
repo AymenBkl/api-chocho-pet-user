@@ -3,6 +3,7 @@ const contactModel = require('../../Models/contact');
 const emailResponse = require('../../EmailResponse/response.controller');
 
 module.exports.addContact = (res,contactDetail) => {
+    console.log(contactDetail);
     contactModel.create(contactDetail)
         .then(contactCreated => {
             console.log(contactCreated);

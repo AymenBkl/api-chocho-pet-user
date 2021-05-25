@@ -12,6 +12,6 @@ module.exports = {
     },
 
     addContact: (req,res,next) => {
-        addContact.addContact(res,req.body);
+        addContact.addContact(res,req.body.contact);
     }
 }
