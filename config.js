@@ -3,7 +3,7 @@ module.exports.config = {
     https: 'https://192.168.1.104:3000',
     webURL: 'https://localhost:8100',  
     mongoDB: {
-            url : 'mongodb://192.168.1.104:27017/chochopet?&ssl=true',
+            url : 'mongodb://127.0.0.1:27017/chochopet?&ssl=true',
             user:'chochoPetUser',
             pw:'w_V3L4^VYf*fkG=M@3b',
     },

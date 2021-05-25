@@ -7,7 +7,7 @@ const config = require('../config');
 
 var key = fs.readFileSync(process.mainModule.path + '\\mongoSSL\\mongodb.pem');
 
-var ca = fs.readFileSync(process.mainModule.path + '\\mongoSSL\\rootCA.pem');
+var ca = fs.readFileSync(process.mainModule.path + '\\mongoSSL\\ca.pem');
 
 
 

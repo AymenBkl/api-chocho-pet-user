@@ -23,7 +23,7 @@ app.use(httpsRedirect);
 app.use(cors.corsWithOptions);
 
 //sendEmail.createTransporter();
-app.use('/api/emails',emailsRouter);
+app.use('/api/user/emails',emailsRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
