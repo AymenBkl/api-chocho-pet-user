@@ -18,8 +18,8 @@ module.exports.createTransporter = () => {
     transport = nodemailer.createTransport({
         service:'gmail',
         auth:{
-            user:config.email.user,
-            pass:config.email.pass
+            user:config.email.email,
+            pass:config.email.psw
         }
     });
     transport.use('compile', templateBuilder({
@@ -28,13 +28,13 @@ module.exports.createTransporter = () => {
     }))
 }
 
-module.exports.sendEmail = (sendTo,price,url,title,itemId) => {
+module.exports.sendEmail = (sendTo,coupon,title,subject) => {
     return new Promise((resolve,reject) => {
         let mailOptions = {
-            from:config.email.user,
+            from:config.email.email,
             to:sendTo,
-            subject:"New Offer",
-            html : template({price : price,url:url,title:title,itemId:itemId})
+            subject:subject,
+            html : template({coupon : coupon,title:title})
         };
     
         transport.sendMail(mailOptions,(error,info) => {

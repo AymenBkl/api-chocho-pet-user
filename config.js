@@ -7,6 +7,11 @@ module.exports.config = {
             user:'chochoPetUser',
             pw:'w_V3L4^VYf*fkG=M@3b',
     },
+
+    email: {
+        email:'chochopets@gmail.com',
+        psw: 'chochopet123456789'
+      }
  
 } 
 

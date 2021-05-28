@@ -13,6 +13,8 @@ router.all('/', function(req, res, next) {
 
 .post('/addcontact',cors.corsWithOptions, emails.addContact)
 
+.post('/sendemail',cors.corsWithOptions, emails.sendEmail)
+
 .post('/addemail',cors.corsWithOptions, emails.addEmail);
 
 
