@@ -2,6 +2,8 @@
 const sendEmailNodeMailer = require('../../Middlewares/nodemailer');
 
 const emailModel = require('../../Models/email');
+
+
 module.exports.sendEmail = async (email,title,subject) => {
     /**return new Promise(async (resolve,reject) => {
         notificationModel.findOne({link:link,email:email,itemId:itemId})
