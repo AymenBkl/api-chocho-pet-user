@@ -12,21 +12,24 @@ module.exports.createPriceRule = (req, res, next) => {
 }
 
 
-module.exports.createDiscount = (emailTosend) => {
-    let body = {
-        discount_code : {
-            code:makeCouponCode(10),
-            price_rule_id:931714400435,
+module.exports.createDiscount = () => {
+    return new Promise(resolve => {
+        let body = {
+            discount_code : {
+                code:makeCouponCode(10),
+                price_rule_id:931714400435,
+            }
+            
         }
-        
-    }
-    prepareRequest.prepareRequest('POST', 'price_rules/931714400435/discount_codes.json',body)
-        .then((result) => {
-            console.log(result);
-        })
-        .catch(err => {
-            console.log(err);
-        })
+        prepareRequest.prepareRequest('POST', 'price_rules/931714400435/discount_codes.json',body)
+            .then((result) => {
+                resolve(result);
+            })
+            .catch(err => {
+                resolve(err);
+            })
+    })
+    
 }
 
 

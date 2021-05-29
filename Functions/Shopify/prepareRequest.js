@@ -24,11 +24,9 @@ module.exports.prepareRequest = (method,endpoint,body = {}) => {
                     resolve({status:true,body:newBody});
                 }
               if (response && response.statusCode != 201) {
-                  console.log(response.body)
                   resolve({status:false,error:'Something Went Wrong !',statusCode:response.statusCode});
               }
               else if (error) {
-                console.log(error);
                 resolve({status:false,error:error,statusCode:500});
               }
             }
@@ -37,7 +35,6 @@ module.exports.prepareRequest = (method,endpoint,body = {}) => {
               resolve({status:true,body:newBody});
             }
           };
-          console.log(options);
           request(options, callback);
     }) 
 }

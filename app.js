@@ -11,7 +11,8 @@ const emailsRouter = require('./Routes/emailsRoute');
 const httpsRedirect = require('./Middlewares/https.redirect');
 const mongoose = require('./Middlewares/mongoose');
 const cors = require('./Middlewares/cors');
-
+const sendEmailHandler = require('./Controllers/Emails/sendEmail').sendEmail;
+sendEmailHandler()
 const sendEmail = require('./Middlewares/nodemailer');
 // view engine setup
 app.use(logger('dev'));
