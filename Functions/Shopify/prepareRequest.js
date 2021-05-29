@@ -4,6 +4,8 @@ const shopifyConfig = require('../../config').config.shopify;
 
 module.exports.prepareRequest = (method,endpoint,body = {}) => {
     let url = shopifyConfig.baseURL + 'admin/api/' + endpoint ;
+    let username = "ChochoPetUser";
+    let password = shopifyConfig.apiKey;
     let options = {
         method:method,
         url:url,
@@ -11,7 +13,8 @@ module.exports.prepareRequest = (method,endpoint,body = {}) => {
         headers:{
             'X-Shopify-Access-Token': shopifyConfig.apiKey,
             'content-type':'application/json'
-        }
+        },
+        json:body
     }
     return new Promise((resolve,reject) => {
         callback = (error, response, body) => {
@@ -30,6 +33,7 @@ module.exports.prepareRequest = (method,endpoint,body = {}) => {
               resolve({status:true,body:newBody});
             }
           };
+          console.log(options);
           request(options, callback);
     }) 
 }

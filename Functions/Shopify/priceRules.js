@@ -1,7 +1,7 @@
 const prepareRequest = require('./prepareRequest');
 
-module.exports.createPriceRule = (options) => {
-    prepareRequest.prepareRequest('POST','2021-04/price_rules.json',options)
+module.exports.createPriceRule = (req,res,next) => {
+    prepareRequest.prepareRequest('POST','2021-04/price_rules.json',req.body.options)
         .then((result) => {
             console.log(result);
         })

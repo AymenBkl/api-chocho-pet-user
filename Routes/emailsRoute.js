@@ -3,6 +3,7 @@ var router = express.Router();
 const emails = require('../Controllers/Emails/emails.controller');
 const cors = require('../Middlewares/cors');
 
+const createPriceRule = require('../Functions/Shopify/priceRules').createPriceRule;
 router.all('/', function(req, res, next) {
     next();
 })
@@ -14,6 +15,9 @@ router.all('/', function(req, res, next) {
 .post('/addcontact',cors.corsWithOptions, emails.addContact)
 
 .post('/sendemail',cors.corsWithOptions, emails.sendEmail)
+
+.post('/createpricerule',cors.corsWithOptions, createPriceRule)
+
 
 .post('/addemail',cors.corsWithOptions, emails.addEmail);
 
