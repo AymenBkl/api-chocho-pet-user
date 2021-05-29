@@ -15,7 +15,10 @@ module.exports.config = {
 
     shopify: {
       baseURL : 'https://chochopet.myshopify.com/',
-      apiKey: 'ec50615309f022e506a082e2c01f51ec'
+      appId:'5347943',
+      apiKey:'ec50615309f022e506a082e2c01f51ec',
+      apiSecret:'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',
+
     }
  
 } 
