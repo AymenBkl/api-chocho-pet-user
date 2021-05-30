@@ -16,7 +16,5 @@ module.exports = {
         addContact.addContact(res,req.body.contact);
     },
 
-    sendEmail: (req,res,next) => {
-        sendEmail.sendEmail('aymenxyz6@gmail.com','WELCOM TO CHOCHO PET','COUPON');
-    }
+    
 }

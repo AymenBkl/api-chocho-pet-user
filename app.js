@@ -8,6 +8,7 @@ var logger = require('morgan');
 var app = express();
 
 const emailsRouter = require('./Routes/emailsRoute');
+const productRouter = require('./Routes/productRouter');
 const httpsRedirect = require('./Middlewares/https.redirect');
 const mongoose = require('./Middlewares/mongoose');
 const cors = require('./Middlewares/cors');
@@ -25,6 +26,7 @@ app.use(cors.corsWithOptions);
 
 sendEmail.createTransporter();
 app.use('/api/user/emails',emailsRouter);
+app.use('/api/user/products',productRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
