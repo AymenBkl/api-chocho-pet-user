@@ -16,15 +16,10 @@ const productSchema = new Schema({
         required:true,
         default:''
     },
-    images:[{
-        src:{
-            type:String,
-        } 
-    }],
     productBadge:{
-        type:String,
-        default:'none'
-    }
+        type:mongoose.Types.ObjectId,
+        ref:'badge',
+    },
 }, {
     timestamps: true
 })

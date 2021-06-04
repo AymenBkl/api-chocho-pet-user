@@ -2,8 +2,12 @@ const productModel = require('../../Models/product');
 
 const productResponse = require('../../HandlerProducts/response.controller');
 
+const badge = require('../../Models/badge');
+
 module.exports.getProduct = (res) => {
     productModel.find({})
+    .select('title productId productBadge')
+    .populate({path:'productBadge'})
         .then(products => {
             if (products && products.length > 0){
                 productResponse.response('success',res,'PRODUCTS LOADDED',200,products,'GET PRODUCTS');
