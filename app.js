@@ -3,10 +3,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
-
+var errorHandler = require('strong-error-handler');
 var app = express();
-var helmet = require('helmet');
 
 const emailsRouter = require('./Routes/emailsRoute');
 const productRouter = require('./Routes/productRouter');
@@ -32,9 +30,11 @@ app.use('/api/user/emails',emailsRouter);
 app.use('/api/user/products',productRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  res.status(err.status || 404);
-  res.render('error');
+  next(createError(404));
 });
+
+app.use(errorHandler({log: false}));
+
 
 
 
@@ -48,6 +48,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-app.use(helmet());
 
 module.exports = app;
