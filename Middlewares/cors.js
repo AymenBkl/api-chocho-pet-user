@@ -11,7 +11,7 @@ const whiteList = [config.config.webURL,config.config.url,config.config.https,'h
 var corsOptionsDelegate = (req, callback) => {
   var corsOptions;
   const index = whiteList.indexOf(req.header("Origin"));  
-  if (true) {
+  if (index != -1) {
     corsOptions = { origin: true };
   } else {
     corsOptions = { origin: false };

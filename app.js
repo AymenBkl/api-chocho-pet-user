@@ -6,6 +6,7 @@ var logger = require('morgan');
 
 
 var app = express();
+var helmet = require('helmet');
 
 const emailsRouter = require('./Routes/emailsRoute');
 const productRouter = require('./Routes/productRouter');
@@ -16,6 +17,8 @@ const sendEmailHandler = require('./Controllers/Emails/sendEmail').sendEmail;
 sendEmailHandler()
 const sendEmail = require('./Middlewares/nodemailer');
 // view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -29,7 +32,8 @@ app.use('/api/user/emails',emailsRouter);
 app.use('/api/user/products',productRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  next(createError(404));
+  res.status(err.status || 404);
+  res.render('error');
 });
 
 
@@ -44,5 +48,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+app.use(helmet());
 
 module.exports = app;
