@@ -16,6 +16,9 @@ router.all('/', function(req, res, next) {
 })
 .get('/getproducts',cors.corsWithOptions,products.getProducts)
 
+.get('/getproduct/:productId',cors.corsWithOptions,products.getProduct);
+
+
 
 
 
