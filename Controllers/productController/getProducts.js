@@ -7,8 +7,8 @@ const badge = require('../../Models/badge');
 const shipingBadges = require('../../Models/shipingBadges');
 module.exports.getProducts = (res) => {
     productModel.find({status:'active'})
-    .select('title productId productBadge productShipingBadge')
-    .populate([{path:'productBadge'},{path:'productShipingBadge'},{path:'recomendedProduct.product',select:'title productId images'}])
+    .select('title productId productBadge productShipingBadge status variant_id price')
+    .populate([{path:'productBadge'},{path:'productShipingBadge'},{path:'recomendedProduct.product',select:'title productId images status variant_id price'}])
         .then(products => {
             if (products && products.length > 0){
                 productResponse.response('success',res,'PRODUCTS LOADDED',200,products,'GET PRODUCTS');
@@ -27,9 +27,9 @@ module.exports.getProducts = (res) => {
 }
 
 module.exports.getProduct = (res,id) => {
-    productModel.findById(id)
-    .select('title productId productBadge productShipingBadge')
-    .populate([{path:'productBadge'},{path:'productShipingBadge'},{path:'recomendedProduct.product',select:'title productId images'}])
+    productModel.findOne({productId:id})
+    .select('title productId productBadge productShipingBadge status variant_id price')
+    .populate([{path:'productBadge'},{path:'productShipingBadge'},{path:'recomendedProduct.product',select:'title productId images status variant_id price' }])
         .then(product => {
             if (product){
                 productResponse.response('success',res,'PRODUCT LOADDED',200,product,'GET PRODUCTS');

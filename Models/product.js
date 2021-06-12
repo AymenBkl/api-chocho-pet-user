@@ -24,6 +24,9 @@ const productSchema = new Schema({
         type:mongoose.Types.ObjectId,
         ref:'shipingbadge',
     },
+    status:{
+        type:String,
+    },
     recomendedProduct:[
         {
             product:{
@@ -36,6 +39,14 @@ const productSchema = new Schema({
             }
         }
     ],
+    price:{
+        type:Number,
+        required:true
+    },
+    variant_id:{
+        type:String,
+        require:true
+    }
 }, {
     timestamps: true
 })
