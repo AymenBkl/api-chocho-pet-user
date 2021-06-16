@@ -9,8 +9,8 @@ module.exports.config = {
     },
 
     email: {
-        email:'chochopets@gmail.com',
-        psw: 'chochopet123456789'
+        email:'chochopet@chochopet.com',
+        psw: 'nw_PAk5=$ZqFGP=cpxt#$xcDR=H&2_'
     },
 
     shopify: {
