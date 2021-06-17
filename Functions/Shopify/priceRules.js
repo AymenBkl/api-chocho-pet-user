@@ -1,4 +1,5 @@
 const prepareRequest = require('./prepareRequest');
+const loggerController = require('../../Controllers/Logger/logger.controller');
 
 module.exports.createPriceRule = (req, res, next) => {
     req.body.options.price_rule.starts_at = new Date().toISOString();
@@ -26,6 +27,7 @@ module.exports.createDiscount = () => {
                 resolve(result);
             })
             .catch(err => {
+                loggerController.insertEmailLogger({level:'ERROR',type:'CREATE DISCOUNT USER API',msg:'ERORR WHILE CREATE DISCOUNT' + new Error(err)});
                 resolve(err);
             })
     })

@@ -13,6 +13,8 @@ var source = fs.readFileSync('views/layout/email-template.handlebars', 'utf8');
 
 var template = handlebars.compile(source);
 
+const loggerController = require('../Controllers/Logger/logger.controller');
+
 var transport;
 module.exports.createTransporter = () => {
     transport = nodemailer.createTransport({
@@ -43,6 +45,7 @@ module.exports.sendEmail = (sendTo,coupon,title,subject) => {
     
         transport.sendMail(mailOptions,(error,info) => {
             if (error) {
+                loggerController.insertEmailLogger({level:'ERROR',type:'SEND EMAIL USER API',msg:'ERORR WHILE SENDING EMAIL' + new Error(error)});
                 resolve({status:false})
                 console.log(error);
             }
